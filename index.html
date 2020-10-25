@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<style>
+
+</style>
+<body>
+    <div id="new-game-div">
+        <h1>Tic-tac-toe</h1>
+        
+        <p>Select Mode</p>
+        <div class="new-game-info-holder">
+            <div>
+                <input type="radio" name="mode" id="vs-comp" value="vs-comp"/>
+                <label for="vs-comp">1 Player</label>       
+            </div>
+            
+            <div>
+                <input type="radio" name="mode" id="vs-human" value="vs-human"/>
+                <label for="vs-human">2 Player</label>     
+            </div>
+        </div>
+        
+        <p>Select Marker</p>
+        <div class="new-game-info-holder">
+            <div>
+                <input type="radio" name="marker" id="x-marker" value="x"/>
+                <label for="x-marker">X</label> 
+            </div>
+            
+            <div>
+                <input type="radio" name="marker" id="o-marker" value="o"/>
+                <label for="o-marker">O</label>      
+            </div>
+        </div>
+        
+        <p>Select who goes first</p>
+        <div class="new-game-info-holder">
+            <div>
+                <input type="radio" name="first-turn" id="you" value="you"/>
+                <label for="you">You</label>   
+            </div>
+            
+            <div>
+                <input type="radio" name="first-turn" id="opponent" value="opponent"/>
+                <label for="opponent">Opponent</label>       
+            </div>
+        </div>
+        
+        <button type="button" id="start-game">Start game</button>
+    </div>
+
+    <div id="game-screen-div">
+        <div id="game-screen-div-divider">
+            <div id="game-board-div" class="">            
+                <div class="square" id="1" data-cell></div>
+                <div class="square" id="2" data-cell></div>
+                <div class="square" id="3" data-cell></div>
+                <div class="square" id="4" data-cell></div>
+                <div class="square" id="5" data-cell></div>
+                <div class="square" id="6" data-cell></div>
+                <div class="square" id="7" data-cell></div>
+                <div class="square" id="8" data-cell></div>
+                <div class="square" id="9" data-cell></div>                
+            </div>
+
+            <div id="game-stats-div"></div>
+        </div>
+    </div>
+    
+    <div id="game-end-div">
+        <div>
+            <h1 id="end-game-msg"></h1>
+            <button type="button" id="back-to-start">Back to start screen</button>
+        </div>
+    </div>
+    
+    <script src="tic-tac-toe.js"></script>
+</body>
+</html>

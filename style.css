@@ -1,0 +1,176 @@
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --area-size: 100px;
+    --mark-size: calc(var(--area-size) * 0.9);
+}
+
+body {
+    margin: 0;
+    background: lightgrey;
+    font-family: Helvetica, sans-serif;
+    height: 100vh;
+}
+
+.new-game-info-holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+}
+
+#new-game-div, #game-end-div > div {
+    background: yellow;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+}
+
+#game-end-div > div {
+    background: purple;
+}
+
+#back-to-start {
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
+
+#game-screen-div, #game-end-div {
+    display: none;
+}
+
+#start-game {
+    position: absolute;
+    padding: 20px;
+    right: 20px;
+    top: 100px;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+#game-end-div h1 {
+    color: white;
+}
+
+#game-end-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#game-screen-div-divider {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 100vh;
+}
+
+#game-board-div {
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    /*align-items: center;
+    justify-items: center;*/
+    align-content: center;
+}
+
+.square {
+    border: 1px solid black;
+    width: var(--area-size);
+    height: var(--area-size);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: red;
+}
+
+.square.x,
+.square.o {
+    cursor: not-allowed;
+}
+
+.square:first-child,
+.square:nth-child(2),
+.square:nth-child(3) {
+    border-top: none;
+}
+
+.square:nth-child(3n + 1) {
+    border-left: none;
+}
+
+.square:nth-child(3n + 3) {
+    border-right: none;
+}
+
+.square:last-child,
+.square:nth-child(8),
+.square:nth-child(7) {
+    border-bottom: none;
+}
+
+.square.x::before,
+.square.x::after,
+.square.o::before,
+.square.o::after,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::after,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::after{
+    background: black;
+    width: var(--mark-size);
+    height: var(--mark-size);
+    content: '';
+    position: absolute;
+}
+
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::after,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::after {
+    background: lightgrey;    
+}
+
+.square.o::before,
+.square.o::after,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::after {
+    border-radius: 50%;
+}
+
+.square.o::after,
+#game-board-div.o:not(.comp)  .square:not(.x):not(.o):hover::after {
+    background: white;
+    width: calc(var(--mark-size) * 0.7);  
+    height: calc(var(--mark-size) * 0.7);      
+}
+
+.square.x::before,
+.square.x::after,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::before,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size) * 0.15);   
+}
+
+.square.x::before,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);     
+}
+
+.square.x::after,
+#game-board-div.x:not(.comp)  .square:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);    
+}
