@@ -232,28 +232,10 @@ function gameActions(gameInstance) {
             return sideIndices[Math.floor(Math.random() * sideIndices.length)];
         }
     }
-
-    function aiMove() {
-        const chosenSquare = document.getElementById(getAIChosenSquare());
-        board.placeMove(chosenSquare, gameInstance.enemy.getMarker());
-        const hasWon = board.checkWin();
-        if (hasWon) {
-            gameInstance.gameWon(gameInstance.enemy);
-        }
-        const isTied = board.checkTie();
-        
-        if (isTied) {
-            gameInstance.gameTied();
-        }
-        
-        gameInstance.switchTurns();
-              
-        board.switchHoverMarker(gameInstance.player);        
-    }
-
-    function handleClick(e) {
+    
+    function move(square) {
         if (!gameInstance.gameOver) {
-            board.placeMove(e.target, gameInstance.currentTurnPlayer.getMarker());
+            board.placeMove(square, gameInstance.currentTurnPlayer.getMarker());
             const hasWon = board.checkWin();
             if (hasWon) {
                 gameInstance.gameWon(gameInstance.currentTurnPlayer);
@@ -263,14 +245,23 @@ function gameActions(gameInstance) {
             if (isTied) {
                 gameInstance.gameTied();
             }
+            
+            gameInstance.switchTurns();          
+            board.switchHoverMarker(gameInstance.currentTurnPlayer);             
+        }
+    }
 
-            gameInstance.switchTurns();
-   
+    function aiMove() {
+        const chosenSquare = document.getElementById(getAIChosenSquare());
+        move(chosenSquare);
+    }
+
+    function handleClick(e) {
+        if (!gameInstance.gameOver) {
+            move(e.target);
             if (gameInstance.gameMode == 'vs-comp') {
                 aiMove();
-            }
-            
-            board.switchHoverMarker(gameInstance.currentTurnPlayer);            
+            }            
         }
     }
     
