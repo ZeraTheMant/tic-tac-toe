@@ -77,7 +77,7 @@ const displayController = (() => {
             hideGameScreenDiv(); 
             showGameEndDiv(); 
             endGameMsg.textContent = msg;
-        }, 3500);
+        }, 3000);
     };
     
     const restartGame = () => {
